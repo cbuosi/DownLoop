@@ -19,6 +19,13 @@ Public Class Form1
             e.Cancel = True
             Dim arquivo1 As String = ""
             Dim oWC As New WebClient
+
+            'adicionado, caso tenha autennticação...
+            If Not oWB.Document Is Nothing Then
+                oWC.Headers.Add(HttpRequestHeader.Cookie, oWB.Document.Cookie)
+            End If
+
+
             oWC.DownloadFile(e.Url, "c:\temp\arq.zip")
         End If
 
@@ -26,6 +33,12 @@ Public Class Form1
             e.Cancel = True
             Dim arquivo1 As String = ""
             Dim oWC As New WebClient
+
+            'adicionado, caso tenha autennticação...
+            If Not oWB.Document Is Nothing Then
+                oWC.Headers.Add(HttpRequestHeader.Cookie, oWB.Document.Cookie)
+            End If
+
             oWC.DownloadFile(e.Url, "c:\temp\arq.pdf")
         End If
 
